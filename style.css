@@ -196,6 +196,7 @@ footer {
 @media (max-width: 480px) {
     h1 {
         font-size: 1.5em;
+        padding: 10px;
     }
 
     p {
@@ -208,6 +209,6 @@ footer {
     }
 
     .content {
-        padding: 40% 10px;
+        padding: 50% 10px;
     }
 }
