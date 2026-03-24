@@ -152,6 +152,69 @@
     </div>
 </section>
 
+
+    <!-- Add to your contact.html -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script>
+// Initialize EmailJS
+(function() {
+    emailjs.init("TZzEHKOrphGpYfw9P"); // Replace with your public key
+})();
+
+// Handle form submission
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const submitBtn = document.getElementById('submitBtn');
+    const btnText = submitBtn.querySelector('.btn-text');
+    const btnLoader = submitBtn.querySelector('.btn-loader');
+    
+    btnText.style.display = 'none';
+    btnLoader.style.display = 'inline-block';
+    submitBtn.disabled = true;
+    
+    const templateParams = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value || 'Not provided',
+        service: document.getElementById('service').value || 'Not specified',
+        message: document.getElementById('message').value,
+        to_email: 'pbkfreelancing@gmail.com'
+    };
+    
+    emailjs.send('service_06dn38a', 'template_vu360xd', templateParams)
+        .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            showNotification('Message sent successfully! We\'ll get back to you soon.', 'success');
+            document.getElementById('contactForm').reset();
+        })
+        .catch(function(error) {
+            console.log('FAILED...', error);
+            showNotification('Failed to send message. Please try again.', 'error');
+        })
+        .finally(function() {
+            btnText.style.display = 'inline-block';
+            btnLoader.style.display = 'none';
+            submitBtn.disabled = false;
+        });
+});
+
+function showNotification(message, type) {
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.innerHTML = `
+        <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+        <span>${message}</span>
+    `;
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.remove();
+    }, 5000);
+}
+</script>
+
 <!-- Footer -->
 <footer class="footer">
     <div class="container">
