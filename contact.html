@@ -81,6 +81,101 @@
             opacity: 0.6;
             cursor: not-allowed;
         }
+        
+        /* Success Modal Styles */
+        .success-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 20000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .success-modal.active {
+            display: flex;
+        }
+        
+        .success-modal-content {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            animation: scaleIn 0.3s ease;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: #10b981;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            animation: bounce 0.5s ease;
+        }
+        
+        .success-icon i {
+            font-size: 40px;
+            color: white;
+        }
+        
+        .success-modal-content h2 {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .success-modal-content p {
+            color: #94a3b8;
+            margin-bottom: 25px;
+        }
+        
+        .success-modal-content .btn {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .success-modal-content .btn:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
     </style>
 </head>
 <body>
@@ -226,6 +321,18 @@
     </div>
 </section>
 
+<!-- Success Modal -->
+<div id="successModal" class="success-modal">
+    <div class="success-modal-content">
+        <div class="success-icon">
+            <i class="fas fa-check"></i>
+        </div>
+        <h2>Message Sent Successfully!</h2>
+        <p>Thank you for contacting PBK Freelancing. We'll get back to you within 24 hours.</p>
+        <button class="btn" onclick="closeSuccessModal()">Close</button>
+    </div>
+</div>
+
 <!-- Footer -->
 <footer class="footer">
     <div class="container">
@@ -269,12 +376,12 @@
     
     // Initialize EmailJS with your Public Key
     // Get this from: https://dashboard.emailjs.com/admin/account
-    emailjs.init("TZzEHKOrphGpYfw9P"); // Replace with your actual public key
+    emailjs.init("TZzEHKOrphGpYfw9P"); // Your public key
     
-    // Your EmailJS credentials
+    // IMPORTANT: Replace these with your actual EmailJS credentials
     const EMAILJS_CONFIG = {
-        SERVICE_ID: "service_ltb5vq5",     // Replace with your Service ID
-        TEMPLATE_ID: "template_9ifyl89"    // Replace with your Template ID
+        SERVICE_ID: "service_ltb5vq5",     // Replace with your actual Service ID from EmailJS
+        TEMPLATE_ID: "template_9ifyl89" // Replace with your actual Template ID
     };
     
     // ========================================
@@ -314,33 +421,41 @@
         btnLoader.style.display = 'inline-block';
         submitBtn.disabled = true;
         
-       
-const templateParams = {
-    name: document.getElementById('name').value,
-    email: document.getElementById('email').value,
-    phone: document.getElementById('phone').value || 'Not provided',
-    service: document.getElementById('service').value || 'Not specified',
-    message: document.getElementById('message').value,
-    date: new Date().toLocaleString()
-};
-
+        // Prepare template parameters
+        const templateParams = {
+            name: name,
+            email: email,
+            phone: phone || 'Not provided',
+            service: service || 'Not specified',
+            message: message,
+            date: new Date().toLocaleString('en-US', {
+                dateStyle: 'full',
+                timeStyle: 'medium'
+            })
+        };
         
         console.log('Sending email with params:', templateParams);
         
         // Send email using EmailJS
         emailjs.send(
-            EMAILJS_CONFIG.'service_ltb5vq5', 
-            EMAILJS_CONFIG.'template_9ifyl89',
+            EMAILJS_CONFIG.service_ltb5vq5,
+            EMAILJS_CONFIG.template_9ifyl89,
             templateParams
         )
         .then(function(response) {
             console.log('SUCCESS!', response.status, response.text);
             
-            // Show success message
-            showNotification('✓ Message sent successfully! We\'ll get back to you within 24 hours.', 'success');
+            // Show success modal
+            showSuccessModal();
             
             // Reset the form
             document.getElementById('contactForm').reset();
+            
+            // Reset character counter
+            const charCounter = document.querySelector('#message + small');
+            if (charCounter) {
+                charCounter.innerHTML = '0 / 1000 characters';
+            }
             
         })
         .catch(function(error) {
@@ -372,6 +487,25 @@ const templateParams = {
             submitBtn.disabled = false;
         });
     });
+    
+    // ========================================
+    // SUCCESS MODAL FUNCTIONS
+    // ========================================
+    
+    function showSuccessModal() {
+        const modal = document.getElementById('successModal');
+        modal.classList.add('active');
+        
+        // Auto close after 5 seconds
+        setTimeout(() => {
+            closeSuccessModal();
+        }, 5000);
+    }
+    
+    function closeSuccessModal() {
+        const modal = document.getElementById('successModal');
+        modal.classList.remove('active');
+    }
     
     // ========================================
     // NOTIFICATION FUNCTION
@@ -422,7 +556,7 @@ const templateParams = {
     
     // Close menu when clicking outside
     document.addEventListener('click', function(event) {
-        if (navLinks && mobileMenuBtn && !navLinks.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+        if (navLinks && mobileMenuBtn && !navLinks.contains(event.target) && !mobileBtn.contains(event.target)) {
             navLinks.classList.remove('active');
         }
     });
@@ -463,7 +597,7 @@ const templateParams = {
     // ========================================
     
     console.log('Contact form loaded. EmailJS ready to send emails.');
-    console.log('Make sure to replace YOUR_EMAILJS_PUBLIC_KEY, YOUR_SERVICE_ID, and YOUR_TEMPLATE_ID with actual values.');
+    console.log('Make sure to replace SERVICE_ID and TEMPLATE_ID with actual values from EmailJS dashboard.');
 </script>
 </body>
 </html>
