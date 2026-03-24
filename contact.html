@@ -420,19 +420,18 @@
         btnText.style.display = 'none';
         btnLoader.style.display = 'inline-block';
         submitBtn.disabled = true;
-        
-        // Prepare template parameters
-        const templateParams = {
-            name: name,
-            email: email,
-            phone: phone || 'Not provided',
-            service: service || 'Not specified',
-            message: message,
-            date: new Date().toLocaleString('en-US', {
-                dateStyle: 'full',
-                timeStyle: 'medium'
-            })
-        };
+
+
+
+        // ✅ CORRECT - Variables match template
+const templateParams = {
+    name: document.getElementById('name').value,
+    email: document.getElementById('email').value,
+    phone: document.getElementById('phone').value,
+    service: document.getElementById('service').value,
+    message: document.getElementById('message').value,
+    date: new Date().toLocaleString()
+};
         
         console.log('Sending email with params:', templateParams);
         
