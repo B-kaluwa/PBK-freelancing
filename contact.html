@@ -314,16 +314,16 @@
         btnLoader.style.display = 'inline-block';
         submitBtn.disabled = true;
         
-        // Prepare template parameters for EmailJS
-        const templateParams = {
-            name: name,
-            email: email,
-            phone: phone || 'Not provided',
-            service: service || 'Not specified',
-            message: message,
-            to_email: 'pbkfreelancing@gmail.com',
-            date: new Date().toLocaleString()
-        };
+       
+const templateParams = {
+    name: document.getElementById('name').value,
+    email: document.getElementById('email').value,
+    phone: document.getElementById('phone').value || 'Not provided',
+    service: document.getElementById('service').value || 'Not specified',
+    message: document.getElementById('message').value,
+    date: new Date().toLocaleString()
+};
+
         
         console.log('Sending email with params:', templateParams);
         
