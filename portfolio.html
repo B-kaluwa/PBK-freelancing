@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="images/hummingbird.png" type="image/x-icon">
+    <title>Portfolio - PBK Freelancing</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            <img src="images/hummingbird.png" alt="PBK Freelancing">
+            <span>PBK Freelancing</span>
+        </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="portfolio.html" class="active">Portfolio</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Page Hero -->
+<section class="page-hero">
+    <div class="container">
+        <h1>Our Portfolio</h1>
+        <p>Showcasing our best work and successful projects</p>
+    </div>
+</section>
+
+<!-- Portfolio Filter -->
+<section class="portfolio-filter">
+    <div class="container">
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="web">Web Development</button>
+            <button class="filter-btn" data-filter="security">Cybersecurity</button>
+            <button class="filter-btn" data-filter="software">Software</button>
+        </div>
+    </div>
+</section>
+
+<!-- Portfolio Grid -->
+<section class="portfolio-grid-section">
+    <div class="container">
+        <div class="portfolio-grid" id="portfolioGrid">
+            <div class="portfolio-item" data-category="web">
+                <div class="portfolio-image">
+                    <img src="images/project1.jpg" alt="E-Commerce Website" onerror="this.src='https://via.placeholder.com/400x300?text=E-Commerce+Website'">
+                    <div class="portfolio-overlay">
+                        <h3>E-Commerce Platform</h3>
+                        <p>Full-featured online store with payment integration</p>
+                        <a href="#" class="btn-service">View Project →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="web">
+                <div class="portfolio-image">
+                    <img src="images/project2.jpg" alt="Corporate Website" onerror="this.src='https://via.placeholder.com/400x300?text=Corporate+Website'">
+                    <div class="portfolio-overlay">
+                        <h3>Corporate Website</h3>
+                        <p>Modern responsive website for a tech company</p>
+                        <a href="#" class="btn-service">View Project →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="security">
+                <div class="portfolio-image">
+                    <img src="images/project3.jpg" alt="Security Audit" onerror="this.src='https://via.placeholder.com/400x300?text=Security+Audit'">
+                    <div class="portfolio-overlay">
+                        <h3>Security Audit Report</h3>
+                        <p>Comprehensive security assessment for financial institution</p>
+                        <a href="#" class="btn-service">View Project →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="software">
+                <div class="portfolio-image">
+                    <img src="images/project4.jpg" alt="Inventory System" onerror="this.src='https://via.placeholder.com/400x300?text=Inventory+System'">
+                    <div class="portfolio-overlay">
+                        <h3>Inventory Management System</h3>
+                        <p>Custom software for retail business</p>
+                        <a href="#" class="btn-service">View Project →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="web">
+                <div class="portfolio-image">
+                    <img src="images/project5.jpg" alt="Portfolio Site" onerror="this.src='https://via.placeholder.com/400x300?text=Portfolio+Site'">
+                    <div class="portfolio-overlay">
+                        <h3>Personal Portfolio</h3>
+                        <p>Modern portfolio website for creative professional</p>
+                        <a href="#" class="btn-service">View Project →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="security">
+                <div class="portfolio-image">
+                    <img src="images/project6.jpg" alt="Penetration Testing" onerror="this.src='https://via.placeholder.com/400x300?text=Penetration+Testing'">
+                    <div class="portfolio-overlay">
+                        <h3>Penetration Testing</h3>
+                        <p>Vulnerability assessment for e-commerce platform</p>
+                        <a href="#" class="btn-service">View Project →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta">
+    <div class="container">
+        <h2>Have a Project in Mind?</h2>
+        <p>Let's bring your ideas to life</p>
+        <a href="contact.html" class="btn btn-primary btn-large">Start Your Project <i class="fas fa-arrow-right"></i></a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <img src="images/hummingbird.png" alt="PBK Freelancing">
+                    <span>PBK Freelancing</span>
+                </div>
+                <p>Delivering excellence in web development, cybersecurity, and IT solutions.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Info</h4>
+                <p><i class="fas fa-phone"></i> +265 999 561 582</p>
+                <p><i class="fas fa-envelope"></i> pbkfreelancing@gmail.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 PBK Freelancing. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
