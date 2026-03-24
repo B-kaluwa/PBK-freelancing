@@ -2,90 +2,274 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link rel="shortcut icon" href="images/hummingbird.png" type="image/x-icon">
-    <title>PBK Freelancing</title>
+    <title>PBK Freelancing | Professional Freelancing Services</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
+<!-- Internet Connection Preloader -->
+<div class="preloader" id="preloader">
+    <div class="preloader-content">
+        <div class="connection-status" id="connectionStatus">
+            <i class="fas fa-wifi"></i>
+            <span>Checking connection...</span>
+        </div>
+        <div class="loader-spinner"></div>
+        <p class="loader-text">Loading amazing content...</p>
+    </div>
+</div>
+
+<!-- Video Background -->
 <div class="video-background">
-    <video autoplay loop muted playsinline>
+    <video autoplay loop muted playsinline id="bgVideo">
         <source src="videos/vd2.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
-</div>
-<br>
-<div class="content">
-    <br>
-    <h1>Welcome to PBK Freelancing</h1>
-    <p>We provide top-notch freelancing services in web development, cybersecurity, and more.</p>
-    <a href="#services" class="btn">Explore Our Services</a>
+    <div class="video-overlay"></div>
 </div>
 
+<!-- Navigation -->
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            <img src="images/hummingbird.png" alt="PBK Freelancing">
+            <span>PBK Freelancing</span>
+        </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1 class="animate-text">Welcome to <span class="highlight">PBK Freelancing</span></h1>
+        <p class="animate-text-delay">Professional Freelancing Services in Web Development, Cybersecurity & IT Solutions</p>
+        <div class="hero-buttons">
+            <a href="#services" class="btn btn-primary">Explore Services <i class="fas fa-arrow-right"></i></a>
+            <a href="contact.html" class="btn btn-outline">Get Quote <i class="fas fa-envelope"></i></a>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section with Cards -->
 <section id="services" class="services">
-    <h2>Our Services</h2>
-    <div class="service">
-        <h3>Web Development</h3>
-        <p>High-quality web solutions tailored to your business needs.</p>
-    </div>
-    <div class="service">
-        <h3>Cybersecurity</h3>
-        <p>Protect your data with our advanced security services.</p>
-    </div>
-    <div class="service">
-        <h3>Software Development</h3>
-        <p>Custom software solutions to streamline your operations.</p>
-    </div>
-    <div class="service">
-        <h3>IT consultation </h3>
-        <p>to help improve technology systems, boost security,
-            and find the right solutions.</p>
+    <div class="container">
+        <h2 class="section-title">Our Premium Services</h2>
+        <p class="section-subtitle">Delivering excellence with cutting-edge technology solutions</p>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>Web Development</h3>
+                <p>Custom websites, e-commerce platforms, and web applications tailored to your business needs.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Responsive Design</li>
+                    <li><i class="fas fa-check"></i> SEO Optimized</li>
+                    <li><i class="fas fa-check"></i> Fast Performance</li>
+                </ul>
+                <a href="pricing.html#web" class="btn-service">Learn More →</a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Cybersecurity</h3>
+                <p>Protect your digital assets with advanced security solutions and threat prevention.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Vulnerability Assessment</li>
+                    <li><i class="fas fa-check"></i> Security Audits</li>
+                    <li><i class="fas fa-check"></i> 24/7 Monitoring</li>
+                </ul>
+                <a href="pricing.html#security" class="btn-service">Learn More →</a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <h3>Software Development</h3>
+                <p>Custom software solutions to streamline your business operations and boost productivity.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Desktop Applications</li>
+                    <li><i class="fas fa-check"></i> Mobile Apps</li>
+                    <li><i class="fas fa-check"></i> API Integration</li>
+                </ul>
+                <a href="pricing.html#software" class="btn-service">Learn More →</a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3>IT Consultation</h3>
+                <p>Expert guidance to optimize your technology infrastructure and digital strategy.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> System Analysis</li>
+                    <li><i class="fas fa-check"></i> Cloud Solutions</li>
+                    <li><i class="fas fa-check"></i> Technology Roadmap</li>
+                </ul>
+                <a href="pricing.html#consulting" class="btn-service">Learn More →</a>
+            </div>
+        </div>
     </div>
 </section>
-<br>
-<!-- Founder and Contact Section -->
-<section id="founder-contact" class="founder-contact">
-    <div class="founder">
-        <h2>Meet the Founder</h2>
-        <img src="images/i1.jpg" alt="Founder" class="founder-image">
-        <p>Prince B. Kaluwa, the visionary behind PBK Freelancing, is dedicated to delivering exceptional services in web development and cybersecurity. With years of experience and a passion for technology, Prince leads our team with expertise and commitment.  <a href="https://b-kaluwa.github.io/My-Portfolio/"> more info</a></p>
-    </div>
 
-    <div class="contact">
-        <h2>Contact Us</h2>
-
-        <br>
-        <h3>through : +265 881 955 564 or + 265 999 561 582</h3>
-        <br>
-        <br>
-        <form action="#" method="post">
-            <label for="name">Full Name</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" required>
-
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-
-            <button type="submit" class="btn">Send</button>
-        </form>
-        <br>
-        <br>
-        <br>
-        <br>
+<!-- Stats Section -->
+<section class="stats">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" data-count="50">0</div>
+                <div class="stat-label">Projects Completed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-count="30">0</div>
+                <div class="stat-label">Happy Clients</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-count="4">0</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-count="24">0</div>
+                <div class="stat-label">Support Hours</div>
+            </div>
+        </div>
     </div>
 </section>
-<br>
-<br>
-<br>
 
-<footer>
-    <p>&copy; 2024 PBK Freelancing. All Rights Reserved.</p>
+<!-- Testimonials Section -->
+<section class="testimonials">
+    <div class="container">
+        <h2 class="section-title">What Our Clients Say</h2>
+        <p class="section-subtitle">Trusted by businesses and individuals worldwide</p>
+        
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-icon">
+                    <i class="fas fa-quote-left"></i>
+                </div>
+                <p class="testimonial-text">"PBK Freelancing delivered an exceptional website for my business. The team was professional, responsive, and the quality exceeded my expectations!"</p>
+                <div class="testimonial-author">
+                    <img src="images/avatar1.jpg" alt="Client" class="author-avatar" onerror="this.src='https://via.placeholder.com/50'">
+                    <div>
+                        <h4>Sarah Johnson</h4>
+                        <p>CEO, TechStart</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="testimonial-icon">
+                    <i class="fas fa-quote-left"></i>
+                </div>
+                <p class="testimonial-text">"The cybersecurity audit they performed was thorough and professional. Their recommendations helped us secure our systems effectively."</p>
+                <div class="testimonial-author">
+                    <img src="images/avatar2.jpg" alt="Client" class="author-avatar" onerror="this.src='https://via.placeholder.com/50'">
+                    <div>
+                        <h4>Michael Chen</h4>
+                        <p>IT Director, DataCorp</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="testimonial-icon">
+                    <i class="fas fa-quote-left"></i>
+                </div>
+                <p class="testimonial-text">"Outstanding web development services! They understood our vision perfectly and delivered a stunning website that drives results."</p>
+                <div class="testimonial-author">
+                    <img src="images/avatar3.jpg" alt="Client" class="author-avatar" onerror="this.src='https://via.placeholder.com/50'">
+                    <div>
+                        <h4>Emily Rodriguez</h4>
+                        <p>Marketing Manager, CreativeHub</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta">
+    <div class="container">
+        <h2>Ready to Transform Your Digital Presence?</h2>
+        <p>Let's discuss how we can help you achieve your goals</p>
+        <a href="contact.html" class="btn btn-primary btn-large">Get Started Today <i class="fas fa-arrow-right"></i></a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <img src="images/hummingbird.png" alt="PBK Freelancing">
+                    <span>PBK Freelancing</span>
+                </div>
+                <p>Delivering excellence in web development, cybersecurity, and IT solutions. Your trusted partner for digital transformation.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-services">
+                <h4>Our Services</h4>
+                <ul>
+                    <li><a href="pricing.html#web">Web Development</a></li>
+                    <li><a href="pricing.html#security">Cybersecurity</a></li>
+                    <li><a href="pricing.html#software">Software Development</a></li>
+                    <li><a href="pricing.html#consulting">IT Consultation</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-contact">
+                <h4>Contact Info</h4>
+                <p><i class="fas fa-phone"></i> +265 999 561 582</p>
+                <p><i class="fas fa-phone"></i> +265 881 955 564</p>
+                <p><i class="fas fa-envelope"></i> pbkfreelancing@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Malawi</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 PBK Freelancing. All Rights Reserved. Developed by Prince B. Kaluwa</p>
+        </div>
+    </div>
 </footer>
 
 <script src="script.js"></script>
